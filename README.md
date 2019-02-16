@@ -2,7 +2,15 @@
 
 # preface
 * `interface SortedSet<E> extends Set<E>`
-
+* `TreeSet<E> implements SortedSet<E>`
+* the implementation class for `SortedSet` should have a constructor accepting `Comparator`
+* if no comparator is specified it should use natural ordering (`compareTo()`
+    method of elements to sort them)
+* if a class does not implements Comparable and we will not specify `Comparator` then `ClassCastException` while 
+attempting to add element
+* handling null:
+    * `NullPointerException` in case of natural order
+    * depends on `Comparator`
 
 # subset methods
 * `SortedSet<E> subSet(E inclusive, E exclusive)`
