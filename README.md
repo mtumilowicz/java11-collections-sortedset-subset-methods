@@ -47,7 +47,7 @@ We will show basic tests of mentioned above subset methods:
         ```
         SortedSet<Integer> integers = new TreeSet<>(Arrays.asList(1, 2, 3));
         
-        var subset = integers.subSet(2, 5);
+        var subset = integers.subSet(2, 5); [2, 3]
         subset.add(4);
         
         assertEquals(Set.of(2, 3, 4), subset);
@@ -57,7 +57,7 @@ We will show basic tests of mentioned above subset methods:
         ```
         SortedSet<Integer> integers = new TreeSet<>(Arrays.asList(1, 2, 3));
         
-        var subset = integers.subSet(2, 5);
+        var subset = integers.subSet(2, 5); [2, 3]
         integers.add(4);
         
         assertEquals(Set.of(2, 3, 4), subset);
@@ -101,22 +101,22 @@ We will show basic tests of mentioned above subset methods:
     * if we modify the headSet the source is also modified
         ```
         SortedSet<Integer> integers = new TreeSet<>(Arrays.asList(1, 3));
-
-        var headSet = integers.headSet(3);
-        headSet.add(2);
-
-        assertEquals(Set.of(1, 2, 3), headSet);
+        
+        var headSet = integers.headSet(3); // [1]
+        integers.add(2);
+        
+        assertEquals(Set.of(1, 2), headSet);
         assertEquals(Set.of(1, 2, 3), integers);
         ```
     * if we modify the source the headSet is also modified
         ```
         SortedSet<Integer> integers = new TreeSet<>(Arrays.asList(1, 3));
 
-        var headSet = integers.headSet(3);
+        var headSet = integers.headSet(3); // [1]
         integers.add(2);
 
-        assertEquals(Set.of(1, 2, 3), headSet);
-        assertEquals(Set.of(1, 2, 3), integers);        
+        assertEquals(Set.of(1, 2), headSet);
+        assertEquals(Set.of(1, 2, 3), integers);      
         ```
     * inserting out of range will throw `IllegalArgumentException`
         ```
