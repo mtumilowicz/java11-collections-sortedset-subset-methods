@@ -143,4 +143,18 @@ public class SubsetMethodsTest {
         var tailSet = integers.tailSet(3);
         tailSet.add(-1);
     }
+    
+    @Test
+    public void first() {
+        SortedSet<Integer> integers = new TreeSet<>(Arrays.asList(1, 2, 3));
+        
+        assertThat(integers.first(), is(1));
+    }
+
+    @Test
+    public void last() {
+        SortedSet<Integer> integers = new TreeSet<>(Arrays.asList(1, 2, 3));
+
+        assertThat(integers.last(), is(3));
+    }
 }
