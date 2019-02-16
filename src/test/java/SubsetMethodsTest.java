@@ -14,18 +14,9 @@ import static org.junit.Assert.assertThat;
  * Created by mtumilowicz on 2019-02-16.
  */
 public class SubsetMethodsTest {
-
+    
     @Test
     public void subset() {
-        SortedSet<Integer> integers = new TreeSet<>(Arrays.asList(1, 2, 3));
-
-        var subset = integers.subSet(2, 6);
-
-        assertEquals(Set.of(2, 3), subset);
-    }
-
-    @Test
-    public void subset_outOfRange() {
         SortedSet<Integer> integers = new TreeSet<>(Arrays.asList(1, 2, 3));
 
         var subset = integers.subSet(0, 20);
@@ -92,12 +83,24 @@ public class SubsetMethodsTest {
 
     @Test
     public void headSet_modify() {
-        SortedSet<Integer> integers = new TreeSet<>(Arrays.asList(1, 2, 3));
+        SortedSet<Integer> integers = new TreeSet<>(Arrays.asList(1, 3));
 
-        var headSet = integers.headSet(5);
-        headSet.add(4);
+        var headSet = integers.headSet(3);
+        headSet.add(2);
 
-        assertEquals(integers, headSet);
+        assertEquals(Set.of(1, 2, 3), headSet);
+        assertEquals(Set.of(1, 2, 3), integers);
+    }
+
+    @Test
+    public void headSet_source_modify() {
+        SortedSet<Integer> integers = new TreeSet<>(Arrays.asList(1, 3));
+
+        var headSet = integers.headSet(3);
+        integers.add(2);
+
+        assertEquals(Set.of(1, 2, 3), headSet);
+        assertEquals(Set.of(1, 2, 3), integers);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -106,8 +109,6 @@ public class SubsetMethodsTest {
 
         var headSet = integers.headSet(4);
         headSet.add(4);
-
-        assertEquals(Set.of(1, 2, 3, 4), headSet);
     }
 
     @Test
@@ -157,15 +158,11 @@ public class SubsetMethodsTest {
     
     @Test
     public void first() {
-        SortedSet<Integer> integers = new TreeSet<>(Arrays.asList(1, 2, 3));
-        
-        assertThat(integers.first(), is(1));
+        assertThat(new TreeSet<>(Arrays.asList(1, 2, 3)).first(), is(1));
     }
 
     @Test
     public void last() {
-        SortedSet<Integer> integers = new TreeSet<>(Arrays.asList(1, 2, 3));
-
-        assertThat(integers.last(), is(3));
+        assertThat(new TreeSet<>(Arrays.asList(1, 2, 3)).last(), is(3));
     }
 }
