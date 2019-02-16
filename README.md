@@ -4,7 +4,7 @@
 
 # preface
 * `interface SortedSet<E> extends Set<E>`
-* `TreeSet<E> implements SortedSet<E>`
+* `class TreeSet<E> implements SortedSet<E>`
 * the implementation class for `SortedSet` should have a constructor accepting `Comparator`
 * if no comparator is specified it should use natural ordering (`compareTo()`
     method of elements to sort them)
