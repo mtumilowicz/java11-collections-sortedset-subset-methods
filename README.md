@@ -8,8 +8,8 @@
 * the implementation class for `SortedSet` should have a constructor accepting `Comparator`
 * if no comparator is specified it should use natural ordering (`compareTo()`
     method of elements to sort them)
-* if a class does not implements `Comparable` and we will not specify `Comparator` then `ClassCastException` while 
-attempting to add element
+* if a class does not implements `Comparable` and we will not specify `Comparator` then 
+`ClassCastException` is thrown while attempting to add element
 * handling null:
     * `NullPointerException` in case of natural order
     * depends on `Comparator`
@@ -35,7 +35,7 @@ attempting to add element
 # project description
 We will show basic tests of mentioned above subset methods:
 1. subset
-    * get subset
+    * create subset
         ```
         SortedSet<Integer> integers = new TreeSet<>(Arrays.asList(1, 2, 3));
         
