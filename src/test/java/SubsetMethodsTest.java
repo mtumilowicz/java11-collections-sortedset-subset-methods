@@ -86,7 +86,7 @@ public class SubsetMethodsTest {
         var headSet = integers.headSet(5);
         headSet.add(4);
 
-        assertEquals(Set.of(1, 2, 3, 4), headSet);
+        assertEquals(integers, headSet);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -97,5 +97,50 @@ public class SubsetMethodsTest {
         headSet.add(4);
 
         assertEquals(Set.of(1, 2, 3, 4), headSet);
+    }
+
+    @Test
+    public void tailSet() {
+        SortedSet<Integer> integers = new TreeSet<>(Arrays.asList(1, 2, 3));
+
+        var tailSet = integers.tailSet(2);
+
+        assertEquals(Set.of(2, 3), tailSet);
+    }
+
+    @Test
+    public void tailSet_outOfRange_right() {
+        SortedSet<Integer> integers = new TreeSet<>(Arrays.asList(1, 2, 3));
+
+        var tailSet = integers.tailSet(4);
+
+        assertThat(tailSet, is(empty()));
+    }
+
+    @Test
+    public void tailSet_outOfRange_left() {
+        SortedSet<Integer> integers = new TreeSet<>(Arrays.asList(1, 2, 3));
+
+        var tailSet = integers.tailSet(0);
+
+        assertEquals(integers, tailSet);
+    }
+
+    @Test
+    public void tailSet_modify() {
+        SortedSet<Integer> integers = new TreeSet<>(Arrays.asList(1, 2, 3));
+
+        var tailSet = integers.tailSet(2);
+        tailSet.add(4);
+
+        assertEquals(Set.of(2, 3, 4), tailSet);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void tailSet_modify_outOfRange() {
+        SortedSet<Integer> integers = new TreeSet<>(Arrays.asList(1, 2, 3));
+
+        var tailSet = integers.tailSet(3);
+        tailSet.add(-1);
     }
 }
