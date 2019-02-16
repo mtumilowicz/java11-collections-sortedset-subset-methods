@@ -88,7 +88,7 @@ public class SubsetMethodsTest {
         var headSet = integers.headSet(3);
         headSet.add(2);
 
-        assertEquals(Set.of(1, 2, 3), headSet);
+        assertEquals(Set.of(1, 2), headSet);
         assertEquals(Set.of(1, 2, 3), integers);
     }
 
@@ -99,7 +99,7 @@ public class SubsetMethodsTest {
         var headSet = integers.headSet(3);
         integers.add(2);
 
-        assertEquals(Set.of(1, 2, 3), headSet);
+        assertEquals(Set.of(1, 2), headSet);
         assertEquals(Set.of(1, 2, 3), integers);
     }
 
