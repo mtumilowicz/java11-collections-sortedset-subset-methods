@@ -44,6 +44,17 @@ public class SubsetMethodsTest {
         assertEquals(Set.of(1, 2, 3, 4), integers);
     }
 
+    @Test
+    public void subset_source_modify() {
+        SortedSet<Integer> integers = new TreeSet<>(Arrays.asList(1, 2, 3));
+
+        var subset = integers.subSet(2, 5);
+        integers.add(4);
+
+        assertEquals(Set.of(2, 3, 4), subset);
+        assertEquals(Set.of(1, 2, 3, 4), integers);
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void subset_modify_outOfRange() {
         SortedSet<Integer> integers = new TreeSet<>(Arrays.asList(1, 2, 3));
