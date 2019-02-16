@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/mtumilowicz/java11-collections-sortedset-subset-methods.svg?branch=master)](https://travis-ci.com/mtumilowicz/java11-collections-sortedset-subset-methods)
+
 # java11-collections-sortedset-subset-methods
 
 # preface
